@@ -19,3 +19,7 @@ a `hasNext` boolean value.
 
 ## 1.1.1
 - Set padding to zero in `TsPaginatedListInsideScroll`.
+
+## 1.1.2
+- `pubspec.yaml` update.
+- `LICENSE` update.
