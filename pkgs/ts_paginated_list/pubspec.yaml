@@ -1,0 +1,25 @@
+name: ts_paginated_list
+description: "A package intended for implementing pagination in various ways in the application in the simplest way with many customizations."
+version: 1.1.1
+repository: "https://github.com/Tim-Solution/ts-paginated-list"
+platforms:
+  android:
+  ios:
+  macos:
+  windows:
+  linux:
+  web:
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.6.6 # For state management
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
