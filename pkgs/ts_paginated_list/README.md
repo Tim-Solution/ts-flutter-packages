@@ -1,4 +1,4 @@
-![TsPaginatedListCover](https://github.com/Tim-Solution/ts-paginated-list/assets/89051381/0277fc15-441f-4297-994a-7b9d86d5d405)
+![ts_paginated_list_cover](https://github.com/Tim-Solution/ts-flutter-packages/assets/89051381/f6b5a8c8-0a53-4740-ab6c-2670959b7198)
 
 More about applying the package in the application below. 
 
