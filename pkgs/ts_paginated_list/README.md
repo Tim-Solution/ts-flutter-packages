@@ -122,6 +122,6 @@ Future<TsPaginatedListResult<ModelName>> fetchData(int page, int limit) async {
 - If you want to use 2 TsPaginatedListInsideScroll widgets inside one list, that is currently not supported and is expected to not work properly at the moment. You will most likely have errors. (We plan to implement that soon)
 
 ## Links | You probably don't need to read this..
-- If you reading this on pub.dev, please visit the [GitHub repository](https://github.com/Tim-Solution/ts-paginated-list) for more details.
+- If you reading this on pub.dev, please visit the [GitHub repository](https://github.com/Tim-Solution/ts-flutter-packages/tree/main/pkgs/ts_paginated_list) for more details.
 - If you reading this on github, please visit the [pub.dev page](https://pub.dev/packages/ts_paginated_list) for more details.
 
