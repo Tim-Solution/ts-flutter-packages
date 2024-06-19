@@ -33,6 +33,7 @@ Future<TsPaginatedListResult<ModelName>> fetchData(int page, int limit) async {
   return TsPaginatedListResult(
     data: items,
     isSuccess: response.statusCode == 200,
+    hasNext: data['hasNext'] ?? null,
   );
 }
 ```
@@ -62,13 +63,13 @@ Future<TsPaginatedListResult<ModelName>> fetchData(int page, int limit) async {
   // Using inside CustomScrollView...
 
   CustomScrollView(
-    controller: scrollController, // This must be set
+    controller: scrollControllerUnique, // Required
     slivers: [
       YourWidget1(),
       YourWidget2(),
       TsPaginatedListInsideScroll.sliver(
         TsPaginatedListSettings.insideListScrollAsList(
-          scrollController: scrollController, // This must be set
+          scrollController: scrollControllerUnique, // Required (same controller as before)
           initialPage: 0,
           limit: 5,
           fetchData: controller.fetchData,
@@ -83,13 +84,13 @@ Future<TsPaginatedListResult<ModelName>> fetchData(int page, int limit) async {
   // Or using inside ListView/SingleChildScrollView...
 
   ListView(
-    controller: scrollController, // This must be set
+    controller: scrollControllerUnique, // Required
     children: [
       YourWidget1(),
       YourWidget2(),
       TsPaginatedListInsideScroll.nonSliver(
         TsPaginatedListSettings.insideListScrollAsList(
-          scrollController: scrollController, // This must be set
+          scrollController: scrollControllerUnique, // Required (same controller as before)
           initialPage: 0,
           limit: 5,
           fetchData: controller.fetchData,
