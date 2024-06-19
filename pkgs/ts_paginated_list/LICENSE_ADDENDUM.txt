@@ -1,0 +1,5 @@
+Additional Terms:
+
+1. You are not permitted to redistribute, publish, sublicense, and/or sell the Software or modified versions of the Software.
+2. Any use of this software must retain the original copyright notice and terms.
+3. The name "TimSolution" or the names of its contributors may not be used to endorse or promote products derived from this software without specific prior written permission.

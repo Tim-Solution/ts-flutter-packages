@@ -22,4 +22,6 @@ a `hasNext` boolean value.
 
 ## 1.1.2
 - `pubspec.yaml` update.
+
+## 1.1.3
 - `LICENSE` update.
