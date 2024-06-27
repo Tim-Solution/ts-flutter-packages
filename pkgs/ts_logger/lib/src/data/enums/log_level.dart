@@ -37,24 +37,24 @@ extension LogLevelExtension on LogLevel {
   String get ansiColor {
     return switch (this) {
       LogLevel.debug => '\x1B[38;2;192;202;51;m',
-      LogLevel.info => '\x1B[0m',
-      LogLevel.warning => '\x1B[33m',
-      LogLevel.error => '\x1B[31m',
+      LogLevel.info => '\x1B[38;2;156;220;254;m',
+      LogLevel.warning => '\x1B[38;2;255;176;46;m',
+      LogLevel.error => '\x1B[38;2;247;86;85;m',
       LogLevel.verbose => '\x1B[38;2;66;165;245;m',
-      LogLevel.critical => '\x1B[31m',
-      LogLevel.fatal => '\x1B[31m',
+      LogLevel.critical => '\x1B[38;2;248;49;47;m',
+      LogLevel.fatal => '\x1B[38;2;255;0;255;m',
     };
   }
 
-  String get upperCaseName {
+  String get readableName {
     return switch (this) {
-      LogLevel.debug => 'DEBUG',
-      LogLevel.info => 'INFO',
-      LogLevel.warning => 'WARNING',
-      LogLevel.error => 'ERROR',
-      LogLevel.verbose => 'VERBOSE',
-      LogLevel.critical => 'CRITICAL',
-      LogLevel.fatal => 'FATAL',
+      LogLevel.debug => 'Debug',
+      LogLevel.info => 'Info',
+      LogLevel.warning => 'Warning',
+      LogLevel.error => 'Error',
+      LogLevel.verbose => 'Verbose',
+      LogLevel.critical => 'Critical',
+      LogLevel.fatal => 'Fatal',
     };
   }
 }

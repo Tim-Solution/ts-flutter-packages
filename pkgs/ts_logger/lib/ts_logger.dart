@@ -21,7 +21,9 @@ class TsLogger with MessageLogger {
   /// Configuration of [TsLogger].
   TsLoggerConfig get config => _config;
 
-  /// Configuration of [TsLogger].
+  /// Configuration of [TsLogger]. It is safe to call this method multiple
+  /// times and wherever you want in the app. Recommended to call this method
+  /// in the main function of the app.
   ///
   /// Example:
   ///

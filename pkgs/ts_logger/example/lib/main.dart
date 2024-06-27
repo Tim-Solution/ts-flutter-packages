@@ -5,27 +5,15 @@ void main() {
     config.logLevels = LogLevel.values.toList();
     config.apiReportDuration = const Duration(minutes: 1);
     config.messageSpacing = 0;
+    config.logMessageTime = true;
   });
 
   const String testMsg = 'This is a test message for testing purposes.';
 
-  TsLogger.instance.logFatal(testMsg);
-  TsLogger.instance.logError(testMsg);
-  TsLogger.instance.logWarning(testMsg);
-  TsLogger.instance.logInfo(testMsg);
-  TsLogger.instance.logDebug(testMsg);
-  TsLogger.instance.logVerbose(testMsg);
-  TsLogger.instance.logCritical(testMsg);
-
-  TsLogger.instance.configure((config) {
-    config.logLevels = [LogLevel.critical, LogLevel.error, LogLevel.fatal];
-  });
-
-  TsLogger.instance.logFatal(testMsg);
-  TsLogger.instance.logError(testMsg);
-  TsLogger.instance.logWarning(testMsg);
-  TsLogger.instance.logInfo(testMsg);
-  TsLogger.instance.logDebug(testMsg);
-  TsLogger.instance.logVerbose(testMsg);
-  TsLogger.instance.logCritical(testMsg);
+  for (final level in LogLevel.values) {
+    TsLogger.instance.logMessage(
+      testMsg,
+      level: level,
+    );
+  }
 }

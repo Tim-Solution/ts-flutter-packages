@@ -6,10 +6,12 @@ class TsLoggerConfig {
   List<LogLevel> _logLevels = LogLevel.values.toList();
   Duration? _apiReportDuration;
   int _messageSpacing = 0;
+  bool _logMessageTime = true;
 
   List<LogLevel> get logLevels => _logLevels;
   Duration? get apiReportDuration => _apiReportDuration;
   int get messageSpacing => _messageSpacing;
+  bool get logMessageTime => _logMessageTime;
 
   /// If the [levels] is empty, no logs will be printed.
   set logLevels(List<LogLevel> levels) => _logLevels = levels;
@@ -22,4 +24,7 @@ class TsLoggerConfig {
   /// Message spacing means how many empty lines will be printed before and
   /// after the message.
   set messageSpacing(int spacing) => _messageSpacing = spacing;
+
+  /// If [log] is true, the time will be printed with the message.
+  set logMessageTime(bool log) => _logMessageTime = log;
 }

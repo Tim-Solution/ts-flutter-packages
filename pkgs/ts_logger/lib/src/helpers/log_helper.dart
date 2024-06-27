@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -8,15 +10,13 @@ abstract class LogHelper {
   LogHelper._();
 
   static void logMessage(String message) {
-    if (kDebugMode) {
-      if (kIsWeb) {
-        print(message);
-      } else {
-        log(
-          message.addRowSpacing(),
-          name: 'TSL',
-        );
-      }
+    if (kIsWeb) {
+      print(message);
+    } else {
+      log(
+        message.addRowSpacing(),
+        name: 'TSL',
+      );
     }
   }
 }
