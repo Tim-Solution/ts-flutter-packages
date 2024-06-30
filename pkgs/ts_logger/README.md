@@ -1,4 +1,5 @@
-## TS Logger
+![ts_logger_cover](https://github.com/Tim-Solution/ts-flutter-packages/assets/89051381/ab646b68-f6d9-466f-acde-cd09a75f7d3b)
+
 Ts Logger is a package designed to enable the user to debug their code and api requests as easily as possible. The package is made so that it is completely safe to use in any environment.( All features will work
 only if `kDebugMode == true` )
 
