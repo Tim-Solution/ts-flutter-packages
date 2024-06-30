@@ -8,6 +8,32 @@ import 'package:ts_logger/src/helpers/string_helper.dart';
 abstract class ApiLogger {
   ApiLogger._();
 
+  static Future<void> apiReport({
+    required String clientId,
+    required int totalRequests,
+    required int successfulRequests,
+    required int failedRequests,
+  }) async {
+    final buffer = StringBuffer();
+    buffer.write(
+      '${TsColors.blueLight}📊 $clientId - REPORT\n'
+      '${TsColors.black}·\n',
+    );
+    buffer.write(
+      '📈 ${TsColors.white}Total requests: ${TsColors.cyan}$totalRequests\n',
+    );
+    buffer.write(
+      '✅ ${TsColors.white}Successful requests: ${TsColors.green}$successfulRequests\n',
+    );
+    buffer.write(
+      '❌ ${TsColors.white}Failed requests: ${TsColors.red}$failedRequests\n',
+    );
+    LogHelper.logMessage(
+      buffer.toString(),
+      spacing: ApiLoggerConfig.instance.messageSpacing,
+    );
+  }
+
   static Future<void> log({
     required String clientId,
     required String requestBody,
