@@ -64,6 +64,7 @@ class TsLogger with MessageLogger {
   /// };
   /// ```
   void onFlutterError(FlutterErrorDetails flutterErrorDetails) {
+    if (!kDebugMode) return;
     final level = flutterErrorDetails.getTsLogLevel;
     logMessage(
       flutterErrorDetails.exceptionAsString(),

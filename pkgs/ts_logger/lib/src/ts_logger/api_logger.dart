@@ -23,10 +23,10 @@ abstract class ApiLogger {
       '📈 ${TsColors.white}Total requests: ${TsColors.cyan}$totalRequests\n',
     );
     buffer.write(
-      '✅ ${TsColors.white}Successful requests: ${TsColors.green}$successfulRequests\n',
+      '✅ ${TsColors.white}Successful: ${TsColors.green}$successfulRequests\n',
     );
     buffer.write(
-      '❌ ${TsColors.white}Failed requests: ${TsColors.red}$failedRequests\n',
+      '❌ ${TsColors.white}Failed: ${TsColors.red}$failedRequests\n',
     );
     LogHelper.logMessage(
       buffer.toString(),
