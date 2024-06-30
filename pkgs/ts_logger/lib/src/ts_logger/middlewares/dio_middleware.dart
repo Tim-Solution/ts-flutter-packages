@@ -19,7 +19,7 @@ class DioMiddleware {
 
   void activate(
     Dio client, {
-    String clientId = '0',
+    String clientId = 'DioClient 0',
   }) {
     assert(
       clientId.isNotEmpty,

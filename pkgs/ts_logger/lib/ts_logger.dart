@@ -61,11 +61,31 @@ class TsLogger with MessageLogger {
   /// **Warning note:**
   /// - You maybe will not see logs in the debug console if device does not have
   /// internet connection. It's because of the way how [GetConnect] works.
-  void activateGetConnectLogger(GetHttpClient client, {String clientId = '0'}) {
+  void activateGetConnectLogger(
+    GetHttpClient client, {
+    String clientId = 'GetConnectClient 0',
+  }) {
     GetConnectMiddleware.instance.activate(client, clientId: clientId);
   }
 
-  void activateDioLogger(Dio client, {String clientId = '0'}) {
+  /// Activate logger for [Dio] client. It will log all requests and responses
+  /// of the client.
+  ///
+  /// If clientId is already activated, nothing will happen. Usefull when you
+  /// have multiple clients.
+  ///
+  /// Note:
+  /// - [clientId] cannot be empty.
+  /// - [clientId] cannot be longer than 30 characters.
+  ///
+  /// **Warning note:**
+  /// - You maybe will not see response body in the debug console if device does
+  /// not have internet connection. It's because of the way how [Dio] works.
+  /// Status code will be 0.
+  void activateDioLogger(
+    Dio client, {
+    String clientId = 'DioClient 0',
+  }) {
     DioMiddleware.instance.activate(client, clientId: clientId);
   }
 }

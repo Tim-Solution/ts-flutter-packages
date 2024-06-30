@@ -19,10 +19,7 @@ abstract class ApiLogger {
     required DateTime endTime,
     required int requestNumber,
   }) async {
-    String? clientIdMsg;
-    if (clientId != '0') {
-      clientIdMsg = '${TsColors.grey} | Client ID: $clientId';
-    }
+    final clientIdMsg = '${TsColors.grey} | Client ID: $clientId';
 
     final req = await _logRequest(
       body: requestBody,
@@ -123,6 +120,7 @@ abstract class ApiLogger {
 
     buffer.write(
       '🔢 ${TsColors.white}Status code: ${statusCode == 200 ? TsColors.green : TsColors.red}$statusCode'
+      '${statusCode == 0 ? '${TsColors.grey} | Device is most likely offline' : ''}'
       '\n',
     );
 

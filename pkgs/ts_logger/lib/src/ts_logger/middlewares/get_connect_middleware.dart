@@ -22,7 +22,7 @@ class GetConnectMiddleware {
 
   void activate(
     GetHttpClient client, {
-    String clientId = '0',
+    String clientId = 'GetConnectClient 0',
   }) {
     assert(
       clientId.isNotEmpty,
