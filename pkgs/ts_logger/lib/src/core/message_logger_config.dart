@@ -26,7 +26,7 @@ class MessageLoggerConfig {
   /// after the message.
   set messageSpacing(int spacing) => _messageSpacing = spacing;
 
-  /// If [colorize] is true, the logs will be colorized. Otherwise, only the
+  /// If [colorizeLogs] is true, the logs will be colorized. Otherwise, only the
   /// level label will be colorized.
   set colorizeLogs(bool colorize) => _colorizeLogs = colorize;
 
