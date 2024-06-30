@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:ts_logger/ts_logger.dart';
 
 void main() {
-  TsLogger.instance.configure((config) {
-    config.logLevels = LogLevel.values.toList();
-    config.apiReportDuration = const Duration(minutes: 1);
-    config.messageSpacing = 0;
-    config.logMessageTime = false;
-    config.colorizeLogs = false;
+  TsLogger.instance.configure((messageLoggerConfig) {
+    messageLoggerConfig.logLevels = LogLevel.values.toList();
+    messageLoggerConfig.messageSpacing = 0;
+    messageLoggerConfig.logMessageTime = false;
+    messageLoggerConfig.colorizeLogs = false;
   });
-
-  const String testMsg = 'This is dummy message for testing purposes.';
 
   TsLogger.instance.logColorizedMessage(
     message: 'This is colorized message for testing purposes.',
@@ -19,7 +16,7 @@ void main() {
   );
   for (final level in LogLevel.values) {
     TsLogger.instance.logMessage(
-      testMsg,
+      'This is dummy message for testing purposes.',
       level: level,
     );
   }

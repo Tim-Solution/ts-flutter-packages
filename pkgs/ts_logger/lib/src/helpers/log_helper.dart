@@ -11,7 +11,7 @@ abstract class LogHelper {
 
   static void logMessage(String message) {
     if (kIsWeb) {
-      print(message);
+      print(message.addRowSpacing());
     } else {
       log(
         message.addRowSpacing(),

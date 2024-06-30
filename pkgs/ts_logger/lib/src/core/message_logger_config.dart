@@ -2,33 +2,25 @@
 
 import 'package:ts_logger/ts_logger.dart';
 
-class TsLoggerConfig {
-  TsLoggerConfig._();
+class MessageLoggerConfig {
+  MessageLoggerConfig._();
 
-  static TsLoggerConfig? _instance;
-  static TsLoggerConfig get instance => _instance ??= TsLoggerConfig._();
+  static MessageLoggerConfig? _instance;
+  static MessageLoggerConfig get instance =>
+      _instance ??= MessageLoggerConfig._();
 
   List<LogLevel> _logLevels = LogLevel.values.toList();
-  Duration? _apiReportDuration;
   int _messageSpacing = 0;
   bool _colorizeLogs = true;
   bool _logMessageTime = true;
 
   List<LogLevel> get logLevels => _logLevels;
-  Duration? get apiReportDuration => _apiReportDuration;
   int get messageSpacing => _messageSpacing;
   bool get colorizeLogs => _colorizeLogs;
   bool get logMessageTime => _logMessageTime;
 
   /// If the [levels] is empty, no logs will be printed.
   set logLevels(List<LogLevel> levels) => _logLevels = levels;
-
-  /// If the [duration] is null, reports will be disabled.
-  ///
-  /// If the [duration] is not null, reports will be printed every [duration].
-  /// Reports means the information about the API call, like number of calls,
-  /// success rate, etc.
-  set apiReportDuration(Duration? duration) => _apiReportDuration = duration;
 
   /// Message spacing means how many empty lines will be printed before and
   /// after the message.

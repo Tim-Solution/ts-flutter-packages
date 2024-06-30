@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 
 import 'package:ts_logger/src/constants/colors.dart';
+import 'package:ts_logger/src/core/message_logger_config.dart';
 import 'package:ts_logger/src/extensions/color_extension.dart';
 import 'package:ts_logger/src/helpers/datetime_helper.dart';
 import 'package:ts_logger/src/helpers/log_helper.dart';
-import 'package:ts_logger/src/ts_logger/logger_config.dart';
 import 'package:ts_logger/ts_logger.dart';
 
 mixin MessageLogger {
@@ -19,7 +19,7 @@ mixin MessageLogger {
     StackTrace? stackTrace,
   }) {
     if (!kDebugMode) return;
-    final logTime = TsLoggerConfig.instance.logMessageTime;
+    final logTime = MessageLoggerConfig.instance.logMessageTime;
     LogHelper.logMessage(
       '${color.toAnsi}$message'
       '${(logTime || file != null || function != null || stackTrace != null) ? '\n${TsLoggerColors.black}·\n${TsLoggerColors.grey}Aditional info:' : ''}'
@@ -42,9 +42,9 @@ mixin MessageLogger {
     StackTrace? stackTrace,
   }) {
     if (!kDebugMode) return;
-    if (TsLoggerConfig.instance.logLevels.contains(level)) {
-      final logTime = TsLoggerConfig.instance.logMessageTime;
-      final colorize = TsLoggerConfig.instance.colorizeLogs;
+    if (MessageLoggerConfig.instance.logLevels.contains(level)) {
+      final logTime = MessageLoggerConfig.instance.logMessageTime;
+      final colorize = MessageLoggerConfig.instance.colorizeLogs;
       LogHelper.logMessage(
         '${level.emoji} '
         '${level.ansiColor}[${level.readableName}]'
