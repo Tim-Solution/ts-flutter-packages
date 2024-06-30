@@ -2,6 +2,13 @@ name: ts_logger
 description: "A package intended for logging API requests and responses in debug console in a simple way."
 version: 1.0.0
 repository: "https://github.com/Tim-Solution/ts-flutter-packages/tree/main/pkgs/ts_logger"
+platforms:
+  android:
+  ios:
+  macos:
+  windows:
+  linux:
+  web:
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

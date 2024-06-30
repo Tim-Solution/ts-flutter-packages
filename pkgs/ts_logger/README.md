@@ -94,6 +94,13 @@ FlutterError.onError = (FlutterErrorDetails details) {
 };
 ```
 
+## Examples
+### Message logging example
+![image](https://github.com/Tim-Solution/ts-flutter-packages/assets/89051381/89fa34d7-99c3-4160-904f-5460a74880e1)
+
+### Api logging example
+![image](https://github.com/Tim-Solution/ts-flutter-packages/assets/89051381/f931eff8-06ab-45a3-8789-77cc0017d948)
+
 
 ## ToDo
 ### Support for packages
