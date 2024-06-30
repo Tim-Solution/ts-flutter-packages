@@ -12,33 +12,6 @@ only if `kDebugMode == true` )
 - Log api client requests and responses.
 
 
-
-## Usage | Message logging
-
-### FlutterError logging
-- Log FlutterError to the console with level and stack trace.
-```dart
-FlutterError.onError = (FlutterErrorDetails details) {
-  TsLogger.instance.onFlutterError(details);
-};
-```
-
-### Log messages
-- Log messages to the console with different log levels. Every log will be unique displayed based on the log level.
-```dart
-TsLogger.instance.logColorizedMessage(...); // Log message with any color
-TsLogger.instance.logMessage(...); // Log message for provided log level
-TsLogger.instance.logDebug(...); // Log message with debug log level
-TsLogger.instance.logInfo(...); // Log message with info log level
-TsLogger.instance.logWarning(...); // Log message with warning log level
-TsLogger.instance.logError(...); // Log message with error log level
-TsLogger.instance.logFatal(...); // Log message with fatal log level
-TsLogger.instance.logVerbose(...); // Log message with verbose log level
-TsLogger.instance.logCritical(...); // Log message with critical log level
-```
-
-
-
 ## Usage | Api logging
 
 ### Api request and response logging
@@ -57,6 +30,33 @@ dioClient.get('https://jsonplaceholder.typicode.com/users');
 
 // Requests and responses will be logged to the console.
 ```
+
+
+
+## Usage | Message logging
+
+### Log messages
+- Log messages to the console with different log levels. Every log will be unique displayed based on the log level.
+```dart
+TsLogger.instance.logColorizedMessage(...); // Log message with any color
+TsLogger.instance.logMessage(...); // Log message for provided log level
+TsLogger.instance.logDebug(...); // Log message with debug log level
+TsLogger.instance.logInfo(...); // Log message with info log level
+TsLogger.instance.logWarning(...); // Log message with warning log level
+TsLogger.instance.logError(...); // Log message with error log level
+TsLogger.instance.logFatal(...); // Log message with fatal log level
+TsLogger.instance.logVerbose(...); // Log message with verbose log level
+TsLogger.instance.logCritical(...); // Log message with critical log level
+```
+
+### FlutterError logging
+- Log FlutterError to the console with level and stack trace.
+```dart
+FlutterError.onError = (FlutterErrorDetails details) {
+  TsLogger.instance.onFlutterError(details);
+};
+```
+
 
 ## Configuration
 - You can configure many things with this package. Please check below example for more details.
