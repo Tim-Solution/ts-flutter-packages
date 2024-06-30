@@ -6,6 +6,7 @@ import 'src/core/message_logger_config.dart';
 import 'src/ts_logger/message_logger.dart';
 
 export 'src/data/enums/log_level.dart';
+export 'src/ts_logger/api_logger.dart';
 
 class TsLogger with MessageLogger {
   TsLogger._();

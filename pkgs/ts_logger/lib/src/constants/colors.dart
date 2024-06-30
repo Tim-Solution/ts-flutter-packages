@@ -11,9 +11,9 @@ abstract class TsColors {
   static final yellow = const Color.fromRGBO(255, 255, 0, 1).toAnsi;
   static final blue = const Color.fromRGBO(0, 0, 255, 1).toAnsi;
   static final blueLight = const Color.fromRGBO(0, 141, 253, 1).toAnsi;
-  static final aqua = const Color.fromRGBO(183, 220, 214, 1).toAnsi;
+  static final aqua = const Color.fromARGB(255, 195, 235, 228).toAnsi;
   static final magenta = const Color.fromRGBO(255, 0, 255, 1).toAnsi;
-  static final cyan = const Color.fromRGBO(0, 255, 255, 1).toAnsi;
+  static final cyan = const Color.fromRGBO(0, 188, 212, 1).toAnsi;
   static final white = const Color.fromRGBO(255, 255, 255, 1).toAnsi;
   static final accentGreen = const Color.fromRGBO(0, 255, 0, 1).toAnsi;
   static final orange = const Color.fromRGBO(251, 192, 45, 1).toAnsi;

@@ -4,11 +4,15 @@ import 'package:ts_logger/src/constants/colors.dart';
 
 extension StringExtension on String {
   /// Based on configuration, it will add empty lines before and after the message.
-  String addRowSpacing(int spacing) {
+  String addRowSpacing(
+    int spacing, {
+    bool addLeading = true,
+    bool addTrailing = true,
+  }) {
     if (spacing > 0) {
       final leading = '${TsColors.black}·\n' * spacing;
       final trailing = '${TsColors.black}\n·' * spacing;
-      return '$leading$this$trailing';
+      return '${addLeading ? leading : ''}$this${addTrailing ? trailing : ''}';
     } else {
       return this;
     }
