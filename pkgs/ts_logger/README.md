@@ -78,7 +78,7 @@ TsLogger.instance.configure((
 ### MessageLoggerConfig properties
 | Property | Description | Default |
 | --- | --- | --- |
-| `logLevel` | Only the levels you specify using this property will be displayed in the debug console. Useful in the case when, for example, you are only interested in fatal errors and the like. | `LogLevel.values` (All) |
+| `logLevels` | Only the levels you specify using this property will be displayed in the debug console. Useful in the case when, for example, you are only interested in fatal errors etc.. | `LogLevel.values` (All) |
 | `messageSpacing` | The spacing around the message in the console. | `0` |
 | `colorizeLogs` | If true, the messages will be colorized, otherwise text will be white. | `true` |
 | `logMessageTime` | If true, the time when the message was logged will be displayed. | `true` |
