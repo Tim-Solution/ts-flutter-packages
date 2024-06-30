@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:ts_logger/ts_logger.dart';
 
@@ -28,12 +29,28 @@ void main() async {
     );
   }
 
-  final client = GetConnect();
+  final getConnectClient = GetConnect();
+  final dioClient = Dio();
 
   TsLogger.instance.activateGetConnectLogger(
-    client.httpClient,
+    getConnectClient.httpClient,
+    clientId: 'GetConnectClient',
+  );
+  TsLogger.instance.activateDioLogger(
+    dioClient,
+    clientId: 'DioClient',
   );
 
-  client.get('https://jsonplaceholder.typicode.com/users');
-  client.get('https://jsonplaceholder.typicode.com/comments?postId=1');
+  getConnectClient.get(
+    'https://jsonplaceholder.typicode.com/users',
+  );
+  getConnectClient.get(
+    'https://jsonplaceholder.typicode.com/comments?postId=1',
+  );
+  dioClient.get(
+    'https://jsonplaceholder.typicode.com/posts/1',
+  );
+  dioClient.get(
+    'https://jsonplaceholder.typicode.com/posts/2',
+  );
 }

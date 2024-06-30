@@ -1,7 +1,9 @@
 library ts_logger;
 
+import 'package:dio/dio.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:ts_logger/src/core/api_logger_config.dart';
+import 'package:ts_logger/src/ts_logger/middlewares/dio_middleware.dart';
 import 'package:ts_logger/src/ts_logger/middlewares/get_connect_middleware.dart';
 
 import 'src/core/message_logger_config.dart';
@@ -61,5 +63,9 @@ class TsLogger with MessageLogger {
   /// internet connection. It's because of the way how [GetConnect] works.
   void activateGetConnectLogger(GetHttpClient client, {String clientId = '0'}) {
     GetConnectMiddleware.instance.activate(client, clientId: clientId);
+  }
+
+  void activateDioLogger(Dio client, {String clientId = '0'}) {
+    DioMiddleware.instance.activate(client, clientId: clientId);
   }
 }
