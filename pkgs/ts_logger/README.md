@@ -104,6 +104,6 @@ FlutterError.onError = (FlutterErrorDetails details) {
 
 ## ToDo
 ### Support for packages
-- [x] Add logging support for [get_connect](https://pub.dev/packages/get#getconnect) package
-- [x] Add logging support for [dio](https://pub.dev/packages/dio) package
-- [ ] Add logging support for [http](https://pub.dev/packages/http) package
+- ✅ Add logging support for [get_connect](https://pub.dev/packages/get#getconnect) package
+- ✅ Add logging support for [dio](https://pub.dev/packages/dio) package
+- ⚙️ Add logging support for [http](https://pub.dev/packages/http) package
