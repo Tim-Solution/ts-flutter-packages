@@ -1,5 +1,7 @@
 library ts_logger;
 
+import 'package:ts_logger/src/core/api_logger_config.dart';
+
 import 'src/core/message_logger_config.dart';
 import 'src/ts_logger/message_logger.dart';
 
@@ -31,8 +33,14 @@ class TsLogger with MessageLogger {
   /// });
   /// ```
   void configure(
-    void Function(MessageLoggerConfig messageLoggerConfig) callback,
+    void Function(
+      MessageLoggerConfig messageLoggerConfig,
+      ApiLoggerConfig apiLoggerConfig,
+    ) callback,
   ) {
-    callback(MessageLoggerConfig.instance);
+    callback(
+      MessageLoggerConfig.instance,
+      ApiLoggerConfig.instance,
+    );
   }
 }

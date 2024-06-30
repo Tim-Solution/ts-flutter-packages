@@ -9,12 +9,12 @@ import 'package:ts_logger/src/extensions/string_extension.dart';
 abstract class LogHelper {
   LogHelper._();
 
-  static void logMessage(String message) {
+  static void logMessage(String message, {required int spacing}) {
     if (kIsWeb) {
-      print(message.addRowSpacing());
+      print(message.addRowSpacing(spacing));
     } else {
       log(
-        message.addRowSpacing(),
+        message.addRowSpacing(spacing),
         name: 'TSL',
       );
     }

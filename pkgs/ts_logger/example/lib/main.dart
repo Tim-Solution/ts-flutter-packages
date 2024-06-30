@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:ts_logger/ts_logger.dart';
 
 void main() {
-  TsLogger.instance.configure((messageLoggerConfig) {
+  TsLogger.instance.configure((
+    messageLoggerConfig,
+    apiLoggerConfig,
+  ) {
     messageLoggerConfig.logLevels = LogLevel.values.toList();
     messageLoggerConfig.messageSpacing = 0;
     messageLoggerConfig.logMessageTime = false;

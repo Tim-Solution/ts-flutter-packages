@@ -22,12 +22,13 @@ mixin MessageLogger {
     final logTime = MessageLoggerConfig.instance.logMessageTime;
     LogHelper.logMessage(
       '${color.toAnsi}$message'
-      '${(logTime || file != null || function != null || stackTrace != null) ? '\n${TsLoggerColors.black}·\n${TsLoggerColors.grey}Aditional info:' : ''}'
-      '${logTime ? '\n${TsLoggerColors.grey}⏰ Time: ${DateTimeHelper.getReadableDateTime(DateTime.now())}' : ''}'
-      '${file != null ? '\n${TsLoggerColors.grey}📁 File: $file' : ''}'
-      '${function != null ? '\n${TsLoggerColors.grey}🔧 Function: $function' : ''}'
-      '${stackTrace != null ? '\n${TsLoggerColors.grey}🔍 Stack trace:\n$stackTrace' : ''}'
-      '${(logTime || file != null || function != null || stackTrace != null) ? '${TsLoggerColors.black}\n·' : ''}',
+      '${(logTime || file != null || function != null || stackTrace != null) ? '\n${TsColors.black}·\n${TsColors.grey}Aditional info:' : ''}'
+      '${logTime ? '\n${TsColors.grey}⏰ Time: ${DateTimeHelper.getReadableDateTime(DateTime.now())}' : ''}'
+      '${file != null ? '\n${TsColors.grey}📁 File: $file' : ''}'
+      '${function != null ? '\n${TsColors.grey}🔧 Function: $function' : ''}'
+      '${stackTrace != null ? '\n${TsColors.grey}🔍 Stack trace:\n$stackTrace' : ''}'
+      '${(logTime || file != null || function != null || stackTrace != null) ? '${TsColors.black}\n·' : ''}',
+      spacing: MessageLoggerConfig.instance.messageSpacing,
     );
   }
 
@@ -48,13 +49,14 @@ mixin MessageLogger {
       LogHelper.logMessage(
         '${level.emoji} '
         '${level.ansiColor}[${level.readableName}]'
-        '${colorize ? '' : TsLoggerColors.white} - $message'
-        '${(logTime || file != null || function != null || stackTrace != null) ? '\n${TsLoggerColors.black}·\n${TsLoggerColors.grey}Aditional info:' : ''}'
-        '${logTime ? '\n${TsLoggerColors.grey}⏰ Time: ${DateTimeHelper.getReadableDateTime(DateTime.now())}' : ''}'
-        '${file != null ? '\n${TsLoggerColors.grey}📁 File: $file' : ''}'
-        '${function != null ? '\n${TsLoggerColors.grey}🔧 Function: $function' : ''}'
-        '${stackTrace != null ? '\n${TsLoggerColors.grey}🔍 Stack trace:\n$stackTrace' : ''}'
-        '${(logTime || file != null || function != null || stackTrace != null) ? '${TsLoggerColors.black}\n·' : ''}',
+        '${colorize ? '' : TsColors.white} - $message'
+        '${(logTime || file != null || function != null || stackTrace != null) ? '\n${TsColors.black}·\n${TsColors.grey}Aditional info:' : ''}'
+        '${logTime ? '\n${TsColors.grey}⏰ Time: ${DateTimeHelper.getReadableDateTime(DateTime.now())}' : ''}'
+        '${file != null ? '\n${TsColors.grey}📁 File: $file' : ''}'
+        '${function != null ? '\n${TsColors.grey}🔧 Function: $function' : ''}'
+        '${stackTrace != null ? '\n${TsColors.grey}🔍 Stack trace:\n$stackTrace' : ''}'
+        '${(logTime || file != null || function != null || stackTrace != null) ? '${TsColors.black}\n·' : ''}',
+        spacing: MessageLoggerConfig.instance.messageSpacing,
       );
     }
   }

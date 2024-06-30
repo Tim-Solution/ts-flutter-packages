@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:ts_logger/src/extensions/color_extension.dart';
 
-abstract class TsLoggerColors {
-  TsLoggerColors._();
+abstract class TsColors {
+  TsColors._();
 
   static final black = const Color.fromRGBO(0, 0, 0, 1).toAnsi;
   static final red = const Color.fromRGBO(255, 0, 0, 1).toAnsi;
