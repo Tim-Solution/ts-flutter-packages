@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:dio/dio.dart';
-import 'package:get/get.dart';
+import 'package:dio/dio.dart' as d;
+import 'package:get/get.dart' as g;
 import 'package:ts_logger/ts_logger.dart';
 
 void main() async {
@@ -29,17 +29,11 @@ void main() async {
     );
   }
 
-  final getConnectClient = GetConnect();
-  final dioClient = Dio();
+  final getConnectClient = g.GetConnect();
+  final dioClient = d.Dio();
 
-  TsLogger.instance.activateGetConnectLogger(
-    getConnectClient.httpClient,
-    clientId: 'GetConnectClient',
-  );
-  TsLogger.instance.activateDioLogger(
-    dioClient,
-    clientId: 'DioClient',
-  );
+  TsLogger.instance.activateGetConnectLogger(getConnectClient.httpClient);
+  TsLogger.instance.activateDioLogger(dioClient);
 
   getConnectClient.get(
     'https://jsonplaceholder.typicode.com/users',

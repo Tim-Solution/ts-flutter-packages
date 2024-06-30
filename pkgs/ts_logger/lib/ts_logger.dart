@@ -1,7 +1,7 @@
 library ts_logger;
 
-import 'package:dio/dio.dart';
-import 'package:get/get_connect/connect.dart';
+import 'package:dio/dio.dart' as d;
+import 'package:get/get_connect/connect.dart' as g;
 import 'package:ts_logger/src/core/api_logger_config.dart';
 import 'package:ts_logger/src/ts_logger/middlewares/dio_middleware.dart';
 import 'package:ts_logger/src/ts_logger/middlewares/get_connect_middleware.dart';
@@ -62,7 +62,7 @@ class TsLogger with MessageLogger {
   /// - You maybe will not see logs in the debug console if device does not have
   /// internet connection. It's because of the way how [GetConnect] works.
   void activateGetConnectLogger(
-    GetHttpClient client, {
+    g.GetHttpClient client, {
     String clientId = 'GetConnectClient 0',
   }) {
     GetConnectMiddleware.instance.activate(client, clientId: clientId);
@@ -83,7 +83,7 @@ class TsLogger with MessageLogger {
   /// not have internet connection. It's because of the way how [Dio] works.
   /// Status code will be 0.
   void activateDioLogger(
-    Dio client, {
+    d.Dio client, {
     String clientId = 'DioClient 0',
   }) {
     DioMiddleware.instance.activate(client, clientId: clientId);
