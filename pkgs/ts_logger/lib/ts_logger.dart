@@ -1,12 +1,13 @@
 library ts_logger;
 
+import 'package:get/get_connect/connect.dart';
 import 'package:ts_logger/src/core/api_logger_config.dart';
+import 'package:ts_logger/src/ts_logger/middlewares/get_connect_middleware.dart';
 
 import 'src/core/message_logger_config.dart';
 import 'src/ts_logger/message_logger.dart';
 
 export 'src/data/enums/log_level.dart';
-export 'src/ts_logger/api_logger.dart';
 
 class TsLogger with MessageLogger {
   TsLogger._();
@@ -43,5 +44,22 @@ class TsLogger with MessageLogger {
       MessageLoggerConfig.instance,
       ApiLoggerConfig.instance,
     );
+  }
+
+  /// Activate logger for [GetHttpClient] client. It will log all requests and
+  /// responses of the client.
+  ///
+  /// If clientId is already activated, nothing will happen. Usefull when you
+  /// have multiple clients.
+  ///
+  /// Note:
+  /// - [clientId] cannot be empty.
+  /// - [clientId] cannot be longer than 30 characters.
+  ///
+  /// **Warning note:**
+  /// - You maybe will not see logs in the debug console if device does not have
+  /// internet connection. It's because of the way how [GetConnect] works.
+  void activateGetConnectLogger(GetHttpClient client, {String clientId = '0'}) {
+    GetConnectMiddleware.instance.activate(client, clientId: clientId);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:get/get.dart';
 import 'package:ts_logger/ts_logger.dart';
 
 void main() async {
@@ -27,28 +28,12 @@ void main() async {
     );
   }
 
-  /// Success
-  await ApiLogger.log(
-    requestBody: {'key': 'value', 'key2': 'value2', 'key3': null}.toString(),
-    responseBody: {'key': 'value', 'key2': 'value2'}.toString(),
-    statusCode: 200,
-    startTime: DateTime.now(),
-    endTime: DateTime.now().add(const Duration(seconds: 1, milliseconds: 125)),
-    method: 'GET',
-    uri: Uri.parse('https://example.com/api/v1/testing?query=param'),
-    requestNumber: 1,
+  final client = GetConnect();
+
+  TsLogger.instance.activateGetConnectLogger(
+    client.httpClient,
   );
 
-  /// Failure
-  await ApiLogger.log(
-    requestBody: {'key': 'value', 'key2': 'value'}.toString(),
-    responseBody: {'key': 'value', 'key2': 'value'}.toString(),
-    statusCode: 400,
-    startTime: DateTime.now(),
-    endTime:
-        DateTime.now().add(const Duration(seconds: 1, milliseconds: 12465)),
-    method: 'POST',
-    uri: Uri.parse('https://example.com/api/v1/testing'),
-    requestNumber: 2,
-  );
+  client.get('https://jsonplaceholder.typicode.com/users');
+  client.get('https://jsonplaceholder.typicode.com/comments?postId=1');
 }

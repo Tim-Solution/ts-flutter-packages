@@ -9,6 +9,7 @@ abstract class ApiLogger {
   ApiLogger._();
 
   static Future<void> log({
+    required String clientId,
     required String requestBody,
     required String responseBody,
     required String method,
@@ -18,11 +19,17 @@ abstract class ApiLogger {
     required DateTime endTime,
     required int requestNumber,
   }) async {
+    String? clientIdMsg;
+    if (clientId != '0') {
+      clientIdMsg = '${TsColors.grey} | Client ID: $clientId';
+    }
+
     final req = await _logRequest(
       body: requestBody,
       method: method,
       uri: uri,
       requestNumber: requestNumber,
+      clientIdMsg: clientIdMsg,
     );
 
     final res = await _logResponse(
@@ -31,6 +38,7 @@ abstract class ApiLogger {
       startTime: startTime,
       endTime: endTime,
       requestNumber: requestNumber,
+      clientIdMsg: clientIdMsg,
     );
 
     LogHelper.logMessage(
@@ -45,11 +53,12 @@ abstract class ApiLogger {
     required String method,
     required Uri uri,
     required int requestNumber,
+    String? clientIdMsg,
   }) async {
     final StringBuffer buffer = StringBuffer();
 
     buffer.write(
-      '${TsColors.green}↑ REQUEST ↑ [$requestNumber]'
+      '${TsColors.green}↑ REQUEST ↑ [$requestNumber] ${clientIdMsg ?? ''}'
       '\n'
       '${TsColors.black}·\n',
     );
@@ -80,7 +89,7 @@ abstract class ApiLogger {
 
     if (ApiLoggerConfig.instance.logRequestBody && body.isNotEmpty) {
       buffer.write(
-        '📦 ${TsColors.white}Body: ${body.colorizeResponseBody()}',
+        '📦 ${TsColors.white}Body: ${body.substringByLength(ApiLoggerConfig.instance.maxResponseLenghtForPrint).colorizeResponseBody()}',
       );
     }
 
@@ -93,12 +102,13 @@ abstract class ApiLogger {
     required DateTime startTime,
     required DateTime endTime,
     required int requestNumber,
+    String? clientIdMsg,
   }) async {
     final StringBuffer buffer = StringBuffer();
     buffer.writeln('${TsColors.black}·\n');
 
     buffer.write(
-      '${TsColors.blueLight}↓ RESPONSE ↓ [$requestNumber]'
+      '${TsColors.blueLight}↓ RESPONSE ↓ [$requestNumber] ${clientIdMsg ?? ''}'
       '\n'
       '${TsColors.black}·\n',
     );
@@ -117,7 +127,8 @@ abstract class ApiLogger {
     );
 
     if (body.isNotEmpty) {
-      buffer.write('📦 ${TsColors.white}Body: ${body.colorizeResponseBody()}');
+      buffer.write(
+          '📦 ${TsColors.white}Body: ${body.substringByLength(ApiLoggerConfig.instance.maxResponseLenghtForPrint).colorizeResponseBody()}');
     }
 
     return buffer.toString();

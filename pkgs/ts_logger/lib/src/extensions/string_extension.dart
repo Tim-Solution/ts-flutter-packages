@@ -27,4 +27,13 @@ extension StringExtension on String {
         .replaceAll('null', '${TsColors.pink}null')
         .replaceAll(',', '${TsColors.aqua},${TsColors.cyan}');
   }
+
+  /// Substring string by length. If string is longer than maxLenght, it will
+  /// return substring of maxLenght. Otherwise, it will return original string.
+  String substringByLength(int maxLenght) {
+    if (this.length > maxLenght) {
+      return '${this.substring(0, maxLenght)} ${TsColors.yellow}... + ${this.length - maxLenght} characters';
+    }
+    return this;
+  }
 }

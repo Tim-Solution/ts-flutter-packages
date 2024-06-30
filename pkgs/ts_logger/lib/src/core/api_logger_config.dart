@@ -6,7 +6,7 @@ class ApiLoggerConfig {
   static ApiLoggerConfig? _instance;
   static ApiLoggerConfig get instance => _instance ??= ApiLoggerConfig._();
 
-  int _maxResponseLenghtForPrint = 2000;
+  int _maxResponseLenghtForPrint = 1500;
   int _messageSpacing = 2;
   bool _logRequestQueryParams = true;
   bool _logRequestBody = true;
@@ -26,7 +26,7 @@ class ApiLoggerConfig {
   /// Represents the maximum length of the response body that will be printed in
   /// debug console.
   ///
-  /// Note: Length must be greater than `0`. Default is `2000`.
+  /// Note: Length must be greater than `0`. Default is `1500`.
   set maxResponseLenghtForPrint(int lenght) {
     assert(
       lenght >= 1,
