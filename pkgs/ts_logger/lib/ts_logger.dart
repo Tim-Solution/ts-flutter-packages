@@ -1,8 +1,11 @@
 library ts_logger;
 
+import 'package:flutter/foundation.dart';
+
 import 'package:dio/dio.dart' as d;
 import 'package:get/get_connect/connect.dart' as g;
 import 'package:ts_logger/src/core/api_logger_config.dart';
+import 'package:ts_logger/src/extensions/flutter_error_details_extension.dart';
 import 'package:ts_logger/src/ts_logger/middlewares/dio_middleware.dart';
 import 'package:ts_logger/src/ts_logger/middlewares/get_connect_middleware.dart';
 
@@ -45,6 +48,27 @@ class TsLogger with MessageLogger {
     callback(
       MessageLoggerConfig.instance,
       ApiLoggerConfig.instance,
+    );
+  }
+
+  /// Log error from [FlutterErrorDetails]. Exception string will be logged to
+  /// the debug console with log level.
+  ///
+  /// Call this method wherever you want in the app.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// FlutterError.onError = (error) {
+  ///   TsLogger.instance.onFlutterError(error);
+  /// };
+  /// ```
+  void onFlutterError(FlutterErrorDetails flutterErrorDetails) {
+    final level = flutterErrorDetails.getTsLogLevel;
+    logMessage(
+      flutterErrorDetails.exceptionAsString(),
+      level: level,
+      stackTrace: flutterErrorDetails.stack,
     );
   }
 

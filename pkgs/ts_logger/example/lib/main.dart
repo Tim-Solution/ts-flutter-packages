@@ -18,6 +18,10 @@ void main() async {
     apiLoggerConfig.logRequestQueryParams = true;
   });
 
+  FlutterError.onError = (details) {
+    TsLogger.instance.onFlutterError(details);
+  };
+
   TsLogger.instance.logColorizedMessage(
     message: 'This is colorized message for testing purposes.',
     color: Colors.cyan,
