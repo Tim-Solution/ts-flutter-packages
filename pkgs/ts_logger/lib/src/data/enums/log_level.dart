@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:ts_logger/src/extensions/color_extension.dart';
+
 enum LogLevel {
   /// Debug level 🐛
   debug,
@@ -8,7 +12,7 @@ enum LogLevel {
   /// Warning level ⚠️
   warning,
 
-  /// Error level ❌
+  /// Error level ⛔️
   error,
 
   /// Verbose level 🔍
@@ -36,13 +40,13 @@ extension LogLevelExtension on LogLevel {
 
   String get ansiColor {
     return switch (this) {
-      LogLevel.debug => '\x1B[38;2;192;202;51;m',
-      LogLevel.info => '\x1B[38;2;156;220;254;m',
-      LogLevel.warning => '\x1B[38;2;255;176;46;m',
-      LogLevel.error => '\x1B[38;2;247;86;85;m',
-      LogLevel.verbose => '\x1B[38;2;66;165;245;m',
-      LogLevel.critical => '\x1B[38;2;248;49;47;m',
-      LogLevel.fatal => '\x1B[38;2;255;0;255;m',
+      LogLevel.debug => const Color.fromARGB(255, 222, 231, 86).toAnsi,
+      LogLevel.info => const Color.fromARGB(255, 124, 204, 247).toAnsi,
+      LogLevel.warning => const Color.fromARGB(255, 245, 178, 71).toAnsi,
+      LogLevel.error => const Color.fromARGB(255, 252, 92, 92).toAnsi,
+      LogLevel.verbose => const Color.fromARGB(255, 42, 137, 214).toAnsi,
+      LogLevel.critical => const Color.fromARGB(255, 255, 72, 69).toAnsi,
+      LogLevel.fatal => const Color.fromARGB(255, 255, 15, 15).toAnsi,
     };
   }
 

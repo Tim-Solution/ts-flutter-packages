@@ -1,11 +1,39 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:ts_logger/src/constants/colors.dart';
+import 'package:ts_logger/src/extensions/color_extension.dart';
 import 'package:ts_logger/src/helpers/datetime_helper.dart';
 import 'package:ts_logger/src/helpers/log_helper.dart';
+import 'package:ts_logger/src/ts_logger/logger_config.dart';
 import 'package:ts_logger/ts_logger.dart';
 
 mixin MessageLogger {
+  /// Logs message with colorized text. Useful for any kind of messages.
+  void logColorizedMessage({
+    required String message,
+    required Color color,
+    String? file,
+    String? function,
+    StackTrace? stackTrace,
+  }) {
+    if (!kDebugMode) return;
+    final logTime = TsLoggerConfig.instance.logMessageTime;
+    LogHelper.logMessage(
+      '${color.toAnsi}$message'
+      '${(logTime || file != null || function != null || stackTrace != null) ? '\n${TsLoggerColors.black}·\n${TsLoggerColors.grey}Aditional info:' : ''}'
+      '${logTime ? '\n${TsLoggerColors.grey}⏰ Time: ${DateTimeHelper.getReadableDateTime(DateTime.now())}' : ''}'
+      '${file != null ? '\n${TsLoggerColors.grey}📁 File: $file' : ''}'
+      '${function != null ? '\n${TsLoggerColors.grey}🔧 Function: $function' : ''}'
+      '${stackTrace != null ? '\n${TsLoggerColors.grey}🔍 Stack trace:\n$stackTrace' : ''}'
+      '${(logTime || file != null || function != null || stackTrace != null) ? '${TsLoggerColors.black}\n·' : ''}',
+    );
+  }
+
+  /// Log message with level label.
+  ///
+  /// If you want just colorized message, use [logColorizedMessage] method.
   void logMessage(
     String message, {
     required LogLevel level,
@@ -14,12 +42,13 @@ mixin MessageLogger {
     StackTrace? stackTrace,
   }) {
     if (!kDebugMode) return;
-    if (TsLogger.instance.config.logLevels.contains(level)) {
-      final logTime = TsLogger.instance.config.logMessageTime;
+    if (TsLoggerConfig.instance.logLevels.contains(level)) {
+      final logTime = TsLoggerConfig.instance.logMessageTime;
+      final colorize = TsLoggerConfig.instance.colorizeLogs;
       LogHelper.logMessage(
         '${level.emoji} '
         '${level.ansiColor}[${level.readableName}]'
-        '${TsLoggerColors.white} - $message'
+        '${colorize ? '' : TsLoggerColors.white} - $message'
         '${(logTime || file != null || function != null || stackTrace != null) ? '\n${TsLoggerColors.black}·\n${TsLoggerColors.grey}Aditional info:' : ''}'
         '${logTime ? '\n${TsLoggerColors.grey}⏰ Time: ${DateTimeHelper.getReadableDateTime(DateTime.now())}' : ''}'
         '${file != null ? '\n${TsLoggerColors.grey}📁 File: $file' : ''}'
@@ -30,6 +59,7 @@ mixin MessageLogger {
     }
   }
 
+  /// Log `🐛 [Debug]` message.
   void logDebug(
     String message, {
     String? file,
@@ -45,6 +75,7 @@ mixin MessageLogger {
     );
   }
 
+  /// Log `📄 [Info]` message.
   void logInfo(
     String message, {
     String? file,
@@ -60,6 +91,7 @@ mixin MessageLogger {
     );
   }
 
+  /// Log `⚠️ [Warning]` message.
   void logWarning(
     String message, {
     String? file,
@@ -75,6 +107,7 @@ mixin MessageLogger {
     );
   }
 
+  /// Log `⛔️ [Error]` message.
   void logError(
     String message, {
     String? file,
@@ -90,6 +123,7 @@ mixin MessageLogger {
     );
   }
 
+  /// Log `💀 [Fatal]` message.
   void logFatal(
     String message, {
     String? file,
@@ -105,6 +139,7 @@ mixin MessageLogger {
     );
   }
 
+  /// Log `🔍 [Verbose]` message.
   void logVerbose(
     String message, {
     String? file,
@@ -120,6 +155,7 @@ mixin MessageLogger {
     );
   }
 
+  /// Log `🚨 [Critical]` message.
   void logCritical(
     String message, {
     String? file,
