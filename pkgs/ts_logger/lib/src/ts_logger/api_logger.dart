@@ -141,7 +141,7 @@ abstract class ApiLogger {
 
     if (ApiLoggerConfig.instance.logRequestBody && body.isNotEmpty) {
       buffer.write(
-        '📦 ${TsColors.white}Body: ${body.substringByLength(ApiLoggerConfig.instance.maxResponseLenghtForPrint).colorizeResponseBody()}',
+        '📦 ${TsColors.white}Body: ${body.substringByLength(ApiLoggerConfig.instance.maxResponseBodyLengthForPrint).colorizeResponseBody()}',
       );
     }
 
@@ -181,7 +181,7 @@ abstract class ApiLogger {
 
     if (body.isNotEmpty) {
       buffer.write(
-          '📦 ${TsColors.white}Body: ${body.substringByLength(ApiLoggerConfig.instance.maxResponseLenghtForPrint).colorizeResponseBody()}');
+          '📦 ${TsColors.white}Body: ${body.substringByLength(ApiLoggerConfig.instance.maxResponseBodyLengthForPrint).colorizeResponseBody()}');
     }
 
     return buffer.toString();

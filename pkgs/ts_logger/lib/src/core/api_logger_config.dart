@@ -6,7 +6,7 @@ class ApiLoggerConfig {
   static ApiLoggerConfig? _instance;
   static ApiLoggerConfig get instance => _instance ??= ApiLoggerConfig._();
 
-  int _maxResponseLenghtForPrint = 1500;
+  int _maxResponseBodyLengthForPrint = 1500;
   int _messageSpacing = 2;
   bool _logRequestQueryParams = true;
   bool _logRequestHeaders = false;
@@ -15,7 +15,7 @@ class ApiLoggerConfig {
   List<int> _successStatusCodes = [200, 201];
   Duration? _reportInterval = const Duration(minutes: 10);
 
-  int get maxResponseLenghtForPrint => _maxResponseLenghtForPrint;
+  int get maxResponseBodyLengthForPrint => _maxResponseBodyLengthForPrint;
   int get messageSpacing => _messageSpacing;
   bool get logRequestQueryParams => _logRequestQueryParams;
   bool get logRequestHeaders => _logRequestHeaders;
@@ -37,12 +37,12 @@ class ApiLoggerConfig {
   /// debug console.
   ///
   /// Note: Length must be greater than `0`. Default is `1500`.
-  set maxResponseLenghtForPrint(int lenght) {
+  set maxResponseBodyLengthForPrint(int lenght) {
     assert(
       lenght >= 1,
       'maxResponseLenghtForPrint must be greater than 0.',
     );
-    _maxResponseLenghtForPrint = lenght;
+    _maxResponseBodyLengthForPrint = lenght;
   }
 
   /// Message spacing means how many empty lines will be printed before and

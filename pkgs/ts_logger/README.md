@@ -12,7 +12,7 @@ only if `kDebugMode == true` )
 
 
 ## Configuration
-- You can configure many things with this package. Please check below example for more details.
+- You can configure many things with this package. Please check the example below for more details.
 
 ### Configuration setup
 ```dart
@@ -25,36 +25,36 @@ TsLogger.instance.configure((
     // ApiLoggerConfig
     apiLoggerConfig.example = 'example';
 
-    // Please check properties motioned below for more details.
+    // Please check the properties mentioned below for more details.
 });
 ```
 
 ### MessageLoggerConfig properties
 | Property | Description | Default |
 | --- | --- | --- |
-| `logLevels` | Only the levels you specify using this property will be displayed in the debug console. Useful in the case when, for example, you are only interested in fatal errors etc.. | `LogLevel.values` (All) |
+| `logLevels` | Only the levels you specify using this property will be displayed in the debug console. Useful in the case when, for example, you are only interested in fatal errors, etc. | `LogLevel.values` (All) |
 | `messageSpacing` | The spacing around the message in the console. | `0` |
-| `colorizeLogs` | If true, the messages will be colorized, otherwise text will be white. | `true` |
+| `colorizeLogs` | If true, the messages will be colorized; otherwise, the text will be white. | `true` |
 | `logMessageTime` | If true, the time when the message was logged will be displayed. | `true` |
 
 ### ApiLoggerConfig properties
 
 | Property | Description | Default |
 | --- | --- | --- |
-| `maxResponseLenghtForPrint` | The maximum length of the body which will be printed to the console. | `1500` |
+| `_maxResponseBodyLengthForPrint` | The maximum length of the body that will be printed to the console. | `1500` |
 | `messageSpacing` | The spacing around the message in the console. | `2` |
 | `logRequestQueryParams` | If true, the query parameters will be displayed in the console. | `true` |
 | `logRequestHeaders` | If true, the request headers will be displayed in the console. | `false` |
-| `ignoreRequestHeaders` | The headers which will be ignored in the console. | `['Authorization']` |
-| `logRequestBody` | If true, the request body will be displayed in the console. | `true` |
-| `successStatusCodes` | The status codes which will be considered as successful. | `[200, 201]` |
+| `ignoreRequestHeaders` | The headers which will be ignored in the console. It does not matter whether letters are uppercase or lowercase. | `['Authorization']` |
+| `logRequestBody` | If true, the request body will be displayed in the console; otherwise, it will not. | `true` |
+| `successStatusCodes` | The status codes that will be considered as successful. | `[200, 201]` |
 | `reportInterval` | Represents the interval for reporting the number of successful and failed requests. `null` means disable. | `Duration(minutes: 10)` |
 
 
 ## Usage | Api logging
 
 ### Api request and response logging
-- Log api client requests and responses. * This is just basic example of usage.
+- Log API client requests and responses. This is a basic example of usage.
 ```dart
 import 'package:get/get.dart' as g;
 import 'package:dio/dio.dart' as d;
@@ -66,8 +66,6 @@ getConnectClient.get('https://jsonplaceholder.typicode.com/users');
 final dioClient = d.Dio();
 TsLogger.instance.activateDioLogger(dioClient);
 dioClient.get('https://jsonplaceholder.typicode.com/users');
-
-// Requests and responses will be logged to the console.
 ```
 
 
