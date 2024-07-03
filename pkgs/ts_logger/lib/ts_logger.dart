@@ -33,10 +33,11 @@ class TsLogger with MessageLogger {
   /// Example:
   ///
   /// ```dart
-  /// TsLogger.instance.config((config) {
-  ///   config.logLevels = LogLevel.values.toList(); // All levels will be logged.
-  ///   config.apiReportDuration = null; // Null means disable;
-  ///   // Check other configuration options. Every configuration is described.
+  /// TsLogger.instance.configure((
+  ///   messageLoggerConfig,
+  ///   apiLoggerConfig,
+  /// ) {
+  ///   // config.example = example;
   /// });
   /// ```
   void configure(
