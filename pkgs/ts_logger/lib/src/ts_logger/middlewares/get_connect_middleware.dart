@@ -40,6 +40,7 @@ class GetConnectMiddleware {
     GetHttpClient client, {
     String clientId = 'GetConnectClient 0',
   }) {
+    if (!kDebugMode) return;
     assert(
       clientId.isNotEmpty,
       'Client ID cannot be empty.',
@@ -48,7 +49,6 @@ class GetConnectMiddleware {
       clientId.length <= 30,
       'Client ID cannot be longer than 30 characters.',
     );
-    if (!kDebugMode) return;
     if (_initializedClients.contains(clientId)) {
       TsLogger.instance.logWarning(
         'Client ID: $clientId is already activated.',
@@ -127,6 +127,7 @@ class GetConnectMiddleware {
       startTime: startTime,
       endTime: endTime,
       requestNumber: requestNumber,
+      headers: request.headers,
     );
   }
 }

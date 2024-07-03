@@ -15,18 +15,15 @@ abstract class ApiLogger {
     required int failedRequests,
   }) async {
     final buffer = StringBuffer();
+    buffer.write('${TsColors.blueLight}📊 $clientId - REPORT\n');
     buffer.write(
-      '${TsColors.blueLight}📊 $clientId - REPORT\n'
-      '${TsColors.black}·\n',
+      '📈 ${TsColors.white}Total requests: ${TsColors.cyan}$totalRequests ${TsColors.grey}| ',
     );
     buffer.write(
-      '📈 ${TsColors.white}Total requests: ${TsColors.cyan}$totalRequests\n',
+      '✅ ${TsColors.white}Successful: ${TsColors.green}$successfulRequests ${TsColors.grey}| ',
     );
     buffer.write(
-      '✅ ${TsColors.white}Successful: ${TsColors.green}$successfulRequests\n',
-    );
-    buffer.write(
-      '❌ ${TsColors.white}Failed: ${TsColors.red}$failedRequests\n',
+      '❌ ${TsColors.white}Failed: ${TsColors.red}$failedRequests',
     );
     LogHelper.logMessage(
       buffer.toString(),
@@ -44,6 +41,7 @@ abstract class ApiLogger {
     required DateTime startTime,
     required DateTime endTime,
     required int requestNumber,
+    required Map<String, dynamic> headers,
   }) async {
     final clientIdMsg = '${TsColors.grey} | Client ID: $clientId';
 
@@ -53,6 +51,7 @@ abstract class ApiLogger {
       uri: uri,
       requestNumber: requestNumber,
       clientIdMsg: clientIdMsg,
+      headers: headers,
     );
 
     final res = await _logResponse(
@@ -76,6 +75,7 @@ abstract class ApiLogger {
     required String method,
     required Uri uri,
     required int requestNumber,
+    required Map<String, dynamic> headers,
     String? clientIdMsg,
   }) async {
     final StringBuffer buffer = StringBuffer();
@@ -92,10 +92,39 @@ abstract class ApiLogger {
       '\n',
     );
 
+    if (ApiLoggerConfig.instance.logRequestHeaders) {
+      final configuredHeaders = headers.entries
+          .toList()
+          .where((element) => !ApiLoggerConfig
+              .instance.ignoreRequestHeadersLowerCase
+              .contains(element.key.toLowerCase()))
+          .toList();
+
+      if (configuredHeaders.isNotEmpty) {
+        buffer.write(
+          '🔖 ${TsColors.white}Headers: ${TsColors.grey}(${configuredHeaders.length})'
+          '\n',
+        );
+
+        for (final element in configuredHeaders) {
+          buffer.write(
+            '   ${TsColors.black}> ${TsColors.orange}${element.key}${TsColors.grey}=${TsColors.cyan}${element.value}${TsColors.grey},'
+            '${configuredHeaders.last != element ? '\n' : ''}',
+          );
+        }
+
+        if ((ApiLoggerConfig.instance.logRequestQueryParams &&
+                uri.queryParameters.isNotEmpty) ||
+            (ApiLoggerConfig.instance.logRequestBody && body.isNotEmpty)) {
+          buffer.write('\n');
+        }
+      }
+    }
+
     if (ApiLoggerConfig.instance.logRequestQueryParams &&
         uri.queryParameters.isNotEmpty) {
       buffer.write(
-        '🧩 ${TsColors.white}Query params${TsColors.grey}(${uri.queryParameters.length}}${TsColors.white}:'
+        '🧩 ${TsColors.white}Query params: ${TsColors.grey}(${uri.queryParameters.length})'
         '\n',
       );
 

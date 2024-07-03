@@ -10,12 +10,15 @@ void main() async {
     apiLoggerConfig,
   ) {
     messageLoggerConfig.logLevels = LogLevel.values.toList();
-    messageLoggerConfig.messageSpacing = 0;
-    messageLoggerConfig.logMessageTime = true;
     messageLoggerConfig.colorizeLogs = false;
-    //
+    // other configurations here
+
     apiLoggerConfig.logRequestBody = true;
     apiLoggerConfig.logRequestQueryParams = true;
+    apiLoggerConfig.logRequestHeaders = true;
+    apiLoggerConfig.ignoreRequestHeaders = ['Authorization'];
+    apiLoggerConfig.reportInterval = null;
+    // other configurations here
   });
 
   FlutterError.onError = (details) {
@@ -39,16 +42,23 @@ void main() async {
   TsLogger.instance.activateGetConnectLogger(getConnectClient.httpClient);
   TsLogger.instance.activateDioLogger(dioClient);
 
-  getConnectClient.get(
-    'https://jsonplaceholder.typicode.com/users',
+  await getConnectClient.get(
+    'https://jsonplaceholder.typicode.com/comments?postId=2',
+    headers: {
+      'content-type': 'application/json',
+      'token': 'test',
+    },
   );
-  getConnectClient.get(
+  await getConnectClient.get(
     'https://jsonplaceholder.typicode.com/comments?postId=1',
+    headers: {
+      'Authorization': 'Bearer testToken',
+    },
   );
-  dioClient.get(
-    'https://jsonplaceholder.typicode.com/posts/1',
-  );
-  dioClient.get(
-    'https://jsonplaceholder.typicode.com/posts/2',
-  );
+
+  for (int i = 0; i < 5; i++) {
+    dioClient.get(
+      'https://jsonplaceholder.typicode.com/posts/1',
+    );
+  }
 }

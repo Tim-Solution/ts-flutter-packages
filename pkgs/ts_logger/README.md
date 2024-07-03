@@ -44,6 +44,8 @@ TsLogger.instance.configure((
 | `maxResponseLenghtForPrint` | The maximum length of the body which will be printed to the console. | `1500` |
 | `messageSpacing` | The spacing around the message in the console. | `2` |
 | `logRequestQueryParams` | If true, the query parameters will be displayed in the console. | `true` |
+| `logRequestHeaders` | If true, the request headers will be displayed in the console. | `false` |
+| `ignoreRequestHeaders` | The headers which will be ignored in the console. | `['Authorization']` |
 | `logRequestBody` | If true, the request body will be displayed in the console. | `true` |
 | `successStatusCodes` | The status codes which will be considered as successful. | `[200, 201]` |
 | `reportInterval` | Represents the interval for reporting the number of successful and failed requests. `null` means disable. | `Duration(minutes: 10)` |

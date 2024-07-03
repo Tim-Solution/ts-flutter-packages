@@ -9,16 +9,24 @@ class ApiLoggerConfig {
   int _maxResponseLenghtForPrint = 1500;
   int _messageSpacing = 2;
   bool _logRequestQueryParams = true;
+  bool _logRequestHeaders = false;
   bool _logRequestBody = true;
+  List<String> _ignoreRequestHeaders = ['Authorization'];
   List<int> _successStatusCodes = [200, 201];
   Duration? _reportInterval = const Duration(minutes: 10);
 
   int get maxResponseLenghtForPrint => _maxResponseLenghtForPrint;
   int get messageSpacing => _messageSpacing;
   bool get logRequestQueryParams => _logRequestQueryParams;
+  bool get logRequestHeaders => _logRequestHeaders;
   bool get logRequestBody => _logRequestBody;
+  List<String> get ignoreRequestHeaders => _ignoreRequestHeaders;
   List<int> get successStatusCodes => _successStatusCodes;
   Duration? get reportInterval => _reportInterval;
+
+  List<String> get ignoreRequestHeadersLowerCase {
+    return ignoreRequestHeaders.map((e) => e.toLowerCase()).toList();
+  }
 
   bool isStatusCodeSuccess(int? statusCode) {
     if (statusCode == null) return false;
@@ -44,8 +52,15 @@ class ApiLoggerConfig {
   /// If `true`, query parameters will be printed in the request log.
   set logRequestQueryParams(bool value) => _logRequestQueryParams = value;
 
+  /// If `true`, request headers will be printed in the request log.
+  set logRequestHeaders(bool value) => _logRequestHeaders = value;
+
   /// If `true`, request body will be printed in the request log.
   set logRequestBody(bool value) => _logRequestBody = value;
+
+  /// Represents the list of headers that will be ignored in the request log.
+  set ignoreRequestHeaders(List<String> headers) =>
+      _ignoreRequestHeaders = headers;
 
   /// Represents the list of success status codes. Default is `[200, 201]`.
   /// Based on this list, the response will be represented as succes or failure.
