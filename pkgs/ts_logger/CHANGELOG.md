@@ -9,3 +9,6 @@
 * Chose which headers to ignore.
 * Some minor improvements.
 * Some comments corrections.
+
+## 1.1.1
+* Internal extension fix for GetConnect logger.
