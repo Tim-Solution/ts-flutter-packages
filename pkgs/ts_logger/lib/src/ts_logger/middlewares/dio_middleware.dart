@@ -105,10 +105,8 @@ class DioMiddleware {
     String clientId,
   ) async {
     final hashCode = request.hashCode;
-    final requestNumber =
-        _requestsSha[clientId]?[hashCode]?['requestNumber'] as int?;
-    final startTime =
-        _requestsSha[clientId]?[hashCode]?['startTime'] as DateTime?;
+    final requestNumber = _requestsSha[clientId]?[hashCode]?['requestNumber'] as int?;
+    final startTime = _requestsSha[clientId]?[hashCode]?['startTime'] as DateTime?;
     final endTime = DateTime.now();
     final method = request.method;
     final uri = request.uri;

@@ -160,8 +160,7 @@ class TsPaginatedListController<T> extends GetxController {
     }
     if (_fetchStatus.value.isSuccess || _fetchStatus.value.isMoreSuccess) {
       if (scrollController.position.pixels >=
-          scrollController.position.maxScrollExtent -
-              settings.startFetchBeforePixels) {
+          scrollController.position.maxScrollExtent - settings.startFetchBeforePixels) {
         fetchMoreData();
       }
     }

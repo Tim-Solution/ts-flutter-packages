@@ -100,10 +100,8 @@ class GetConnectMiddleware {
     Response response,
     String clientId,
   ) async {
-    final requestNumber =
-        _requestsSha[clientId]![request.hashCode]?['requestNumber'] as int;
-    final startTime =
-        _requestsSha[clientId]![request.hashCode]!['startTime'] as DateTime;
+    final requestNumber = _requestsSha[clientId]![request.hashCode]?['requestNumber'] as int;
+    final startTime = _requestsSha[clientId]![request.hashCode]!['startTime'] as DateTime;
     final endTime = DateTime.now();
     final method = request.method;
     final uri = request.url;

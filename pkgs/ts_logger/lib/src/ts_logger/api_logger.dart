@@ -95,9 +95,8 @@ abstract class ApiLogger {
     if (ApiLoggerConfig.instance.logRequestHeaders) {
       final configuredHeaders = headers.entries
           .toList()
-          .where((element) => !ApiLoggerConfig
-              .instance.ignoreRequestHeadersLowerCase
-              .contains(element.key.toLowerCase()))
+          .where(
+              (element) => !ApiLoggerConfig.instance.ignoreRequestHeadersLowerCase.contains(element.key.toLowerCase()))
           .toList();
 
       if (configuredHeaders.isNotEmpty) {
@@ -113,16 +112,14 @@ abstract class ApiLogger {
           );
         }
 
-        if ((ApiLoggerConfig.instance.logRequestQueryParams &&
-                uri.queryParameters.isNotEmpty) ||
+        if ((ApiLoggerConfig.instance.logRequestQueryParams && uri.queryParameters.isNotEmpty) ||
             (ApiLoggerConfig.instance.logRequestBody && body.isNotEmpty)) {
           buffer.write('\n');
         }
       }
     }
 
-    if (ApiLoggerConfig.instance.logRequestQueryParams &&
-        uri.queryParameters.isNotEmpty) {
+    if (ApiLoggerConfig.instance.logRequestQueryParams && uri.queryParameters.isNotEmpty) {
       buffer.write(
         '🧩 ${TsColors.white}Query params: ${TsColors.grey}(${uri.queryParameters.length})'
         '\n',

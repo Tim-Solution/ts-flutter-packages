@@ -31,9 +31,7 @@ class TsPaginatedListInsideScroll<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _isSliver
-        ? SliverToBoxAdapter(child: _buildChild(context))
-        : _buildChild(context);
+    return _isSliver ? SliverToBoxAdapter(child: _buildChild(context)) : _buildChild(context);
   }
 
   Widget _buildChild(BuildContext context) {
@@ -48,13 +46,11 @@ class TsPaginatedListInsideScroll<T> extends StatelessWidget {
               final status = controller.fetchStatus;
 
               if (status.isLoading) {
-                return settings.loadingWidget ??
-                    const Center(child: TsLoadingIndicator());
+                return settings.loadingWidget ?? const Center(child: TsLoadingIndicator());
               }
 
               if (status.isError) {
-                return settings.loadingErrorWidget
-                        ?.call(controller.initialFetch) ??
+                return settings.loadingErrorWidget?.call(controller.initialFetch) ??
                     IconButton(
                       onPressed: controller.initialFetch,
                       icon: const Icon(Icons.replay),
@@ -72,8 +68,7 @@ class TsPaginatedListInsideScroll<T> extends StatelessWidget {
                                 controller.fetchStatus.isMoreSuccess ||
                                 controller.fetchStatus.isNoMoreData) &&
                             controller.currentData.isEmpty
-                        ? settings.noResultWidget ??
-                            const Center(child: Text('No result'))
+                        ? settings.noResultWidget ?? const Center(child: Text('No result'))
                         : settings.isGrid
                             ? GridView.builder(
                                 padding: EdgeInsets.zero,
@@ -122,8 +117,7 @@ class TsPaginatedListInsideScroll<T> extends StatelessWidget {
                   ),
                   Obx(
                     () => controller.fetchStatus.isMoreError
-                        ? settings.loadingMoreErrorWidget
-                                ?.call(controller.fetchMoreData) ??
+                        ? settings.loadingMoreErrorWidget?.call(controller.fetchMoreData) ??
                             SizedBox(
                               width: settings.isHorizontal ? 150 : null,
                               height: settings.isHorizontal ? null : 150,

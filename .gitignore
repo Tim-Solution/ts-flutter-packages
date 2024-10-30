@@ -4,7 +4,6 @@
 .packages
 .pub/
 .dart_tool/
-.vscode/
 *.iml
 
 # Gradle?
@@ -57,3 +56,6 @@ gradlew.bat
 .project
 .classpath
 .settings
+
+# FVM Version Cache
+.fvm/

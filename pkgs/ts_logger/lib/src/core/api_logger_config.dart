@@ -59,8 +59,7 @@ class ApiLoggerConfig {
   set logRequestBody(bool value) => _logRequestBody = value;
 
   /// Represents the list of headers that will be ignored in the request log.
-  set ignoreRequestHeaders(List<String> headers) =>
-      _ignoreRequestHeaders = headers;
+  set ignoreRequestHeaders(List<String> headers) => _ignoreRequestHeaders = headers;
 
   /// Represents the list of success status codes. Default is `[200, 201]`.
   /// Based on this list, the response will be represented as succes or failure.

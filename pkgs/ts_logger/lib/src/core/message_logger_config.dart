@@ -6,8 +6,7 @@ class MessageLoggerConfig {
   MessageLoggerConfig._();
 
   static MessageLoggerConfig? _instance;
-  static MessageLoggerConfig get instance =>
-      _instance ??= MessageLoggerConfig._();
+  static MessageLoggerConfig get instance => _instance ??= MessageLoggerConfig._();
 
   List<LogLevel> _logLevels = LogLevel.values.toList();
   int _messageSpacing = 0;

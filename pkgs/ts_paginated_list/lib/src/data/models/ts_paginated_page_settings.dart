@@ -40,8 +40,7 @@ class TsPaginatedPageSettings<T> {
   ///   );
   /// }
   /// ```
-  final Future<TsPaginatedListResult<T>> Function(int page, int limit)
-      fetchData;
+  final Future<TsPaginatedListResult<T>> Function(int page, int limit) fetchData;
 
   /// Function to build the widget for each item in the list.
   final Widget Function(BuildContext context, T item, int index) builder;

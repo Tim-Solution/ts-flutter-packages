@@ -23,13 +23,11 @@ class TsPaginatedPageView<T> extends StatelessWidget {
             final fetchStatus = controller.fetchStatus;
 
             if (fetchStatus.isLoading) {
-              return settings.loadingPageWidget ??
-                  const Center(child: TsLoadingIndicator());
+              return settings.loadingPageWidget ?? const Center(child: TsLoadingIndicator());
             }
 
             if (fetchStatus.isError) {
-              return settings.loadingErrorWidget
-                      ?.call(controller.initialFetch) ??
+              return settings.loadingErrorWidget?.call(controller.initialFetch) ??
                   Center(
                     child: IconButton(
                       onPressed: controller.initialFetch,
@@ -47,16 +45,13 @@ class TsPaginatedPageView<T> extends StatelessWidget {
                   ? controller.currentData.length + 1
                   : controller.currentData.length,
               itemBuilder: (context, index) {
-                if ((fetchStatus.isMoreLoading || fetchStatus.isMoreError) &&
-                    index == controller.currentData.length) {
+                if ((fetchStatus.isMoreLoading || fetchStatus.isMoreError) && index == controller.currentData.length) {
                   if (fetchStatus.isMoreLoading) {
-                    return settings.additionalLoadingWidget ??
-                        const Center(child: TsLoadingIndicator());
+                    return settings.additionalLoadingWidget ?? const Center(child: TsLoadingIndicator());
                   }
 
                   if (fetchStatus.isMoreError) {
-                    return settings.loadingMoreErrorWidget
-                            ?.call(controller.fetchMoreData) ??
+                    return settings.loadingMoreErrorWidget?.call(controller.fetchMoreData) ??
                         Center(
                           child: IconButton(
                             onPressed: controller.fetchMoreData,

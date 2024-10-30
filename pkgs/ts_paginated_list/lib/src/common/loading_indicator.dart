@@ -9,8 +9,6 @@ class TsLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
-        ? const CupertinoActivityIndicator()
-        : const CircularProgressIndicator();
+    return Platform.isIOS ? const CupertinoActivityIndicator() : const CircularProgressIndicator();
   }
 }

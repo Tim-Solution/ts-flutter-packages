@@ -22,8 +22,7 @@ class TsPaginatedListSettings<T> {
   ///   );
   /// }
   /// ```
-  final Future<TsPaginatedListResult<T>> Function(int page, int limit)
-      fetchData;
+  final Future<TsPaginatedListResult<T>> Function(int page, int limit) fetchData;
 
   /// The number of items to fetch in each request.
   final int limit;

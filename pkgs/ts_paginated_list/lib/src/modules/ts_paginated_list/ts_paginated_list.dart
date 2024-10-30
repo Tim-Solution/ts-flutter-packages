@@ -25,13 +25,11 @@ class TsPaginatedList<T> extends StatelessWidget {
             final status = controller.fetchStatus;
 
             if (status.isLoading) {
-              return settings.loadingWidget ??
-                  const Center(child: TsLoadingIndicator());
+              return settings.loadingWidget ?? const Center(child: TsLoadingIndicator());
             }
 
             if (status.isError) {
-              return settings.loadingErrorWidget
-                      ?.call(controller.initialFetch) ??
+              return settings.loadingErrorWidget?.call(controller.initialFetch) ??
                   Center(
                     child: IconButton(
                       onPressed: controller.initialFetch,
@@ -56,8 +54,7 @@ class TsPaginatedList<T> extends StatelessWidget {
                           controller.currentData.isEmpty
                       ? SliverFillRemaining(
                           hasScrollBody: false,
-                          child: settings.noResultWidget ??
-                              const Center(child: Text('No result')),
+                          child: settings.noResultWidget ?? const Center(child: Text('No result')),
                         )
                       : settings.isGrid
                           ? SliverGrid.builder(
@@ -100,8 +97,7 @@ class TsPaginatedList<T> extends StatelessWidget {
                 Obx(
                   () => controller.fetchStatus.isMoreError
                       ? SliverToBoxAdapter(
-                          child: settings.loadingMoreErrorWidget
-                                  ?.call(controller.fetchMoreData) ??
+                          child: settings.loadingMoreErrorWidget?.call(controller.fetchMoreData) ??
                               SizedBox(
                                 width: settings.isHorizontal ? 150 : null,
                                 height: settings.isHorizontal ? null : 150,
