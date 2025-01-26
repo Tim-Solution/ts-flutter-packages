@@ -52,6 +52,8 @@ abstract class ApiLogger {
       requestNumber: requestNumber,
       clientIdMsg: clientIdMsg,
       headers: headers,
+      startTime: startTime,
+      endTime: endTime,
     );
 
     final res = await _logResponse(
@@ -76,6 +78,8 @@ abstract class ApiLogger {
     required Uri uri,
     required int requestNumber,
     required Map<String, dynamic> headers,
+    required DateTime startTime,
+    required DateTime endTime,
     String? clientIdMsg,
   }) async {
     final StringBuffer buffer = StringBuffer();
@@ -91,6 +95,13 @@ abstract class ApiLogger {
       ' ${TsColors.cyan}${uri.path.isEmpty ? '/' : uri.path}'
       '\n',
     );
+
+    if (ApiLoggerConfig.instance.logRequestStartTime) {
+      buffer.write(
+        '🕒 ${TsColors.white}Started at: ${TsColors.grey}${DateTimeHelper.getReadableDateTime(startTime)}'
+        '\n',
+      );
+    }
 
     if (ApiLoggerConfig.instance.logRequestHeaders) {
       final configuredHeaders = headers.entries

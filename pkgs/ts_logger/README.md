@@ -47,6 +47,7 @@ TsLogger.instance.configure((
 | `logRequestHeaders` | If true, the request headers will be displayed in the console. | `false` |
 | `ignoreRequestHeaders` | The headers which will be ignored in the console. It does not matter whether letters are uppercase or lowercase. | `['Authorization']` |
 | `logRequestBody` | If true, the request body will be displayed in the console; otherwise, it will not. | `true` |
+| `logRequestStartTime` | If true, the request start time will be displayed in the console. | `true` |
 | `successStatusCodes` | The status codes that will be considered as successful. | `[200, 201]` |
 | `reportInterval` | Represents the interval for reporting the number of successful and failed requests. `null` means disable. | `Duration(minutes: 10)` |
 

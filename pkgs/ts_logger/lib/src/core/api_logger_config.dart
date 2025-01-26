@@ -11,6 +11,7 @@ class ApiLoggerConfig {
   bool _logRequestQueryParams = true;
   bool _logRequestHeaders = false;
   bool _logRequestBody = true;
+  bool _logRequestStartTime = true;
   List<String> _ignoreRequestHeaders = ['Authorization'];
   List<int> _successStatusCodes = [200, 201];
   Duration? _reportInterval = const Duration(minutes: 10);
@@ -20,6 +21,7 @@ class ApiLoggerConfig {
   bool get logRequestQueryParams => _logRequestQueryParams;
   bool get logRequestHeaders => _logRequestHeaders;
   bool get logRequestBody => _logRequestBody;
+  bool get logRequestStartTime => _logRequestStartTime;
   List<String> get ignoreRequestHeaders => _ignoreRequestHeaders;
   List<int> get successStatusCodes => _successStatusCodes;
   Duration? get reportInterval => _reportInterval;
@@ -57,6 +59,9 @@ class ApiLoggerConfig {
 
   /// If `true`, request body will be printed in the request log.
   set logRequestBody(bool value) => _logRequestBody = value;
+
+  /// If `true`, request start time will be printed in the request log.
+  set logRequestStartTime(bool value) => _logRequestStartTime = value;
 
   /// Represents the list of headers that will be ignored in the request log.
   set ignoreRequestHeaders(List<String> headers) => _ignoreRequestHeaders = headers;

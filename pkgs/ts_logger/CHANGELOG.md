@@ -12,3 +12,6 @@
 
 ## 1.1.1
 * Internal extension fix for GetConnect logger.
+
+## 1.1.2
+* Logging request start time in api logger.
