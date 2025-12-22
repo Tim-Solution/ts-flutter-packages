@@ -15,3 +15,6 @@
 
 ## 1.1.2
 * Logging request start time in api logger.
+
+## 1.1.3
+* Fix REPORT periodic report bug. (Does not report correct number of requests)
