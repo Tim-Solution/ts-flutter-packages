@@ -17,7 +17,7 @@ void main() async {
     apiLoggerConfig.logRequestQueryParams = true;
     apiLoggerConfig.logRequestHeaders = true;
     apiLoggerConfig.ignoreRequestHeaders = ['Authorization'];
-    apiLoggerConfig.reportInterval = null;
+    apiLoggerConfig.reportInterval = const Duration(seconds: 5);
     // other configurations here
   });
 

@@ -87,8 +87,8 @@ class GetConnectMiddleware {
   ) {
     final hashCode = request.hashCode;
     _requestsSha[clientId] ??= {};
-    _successfulRequests[clientId] = 0;
-    _failedRequests[clientId] = 0;
+    _successfulRequests.putIfAbsent(clientId, () => 0);
+    _failedRequests.putIfAbsent(clientId, () => 0);
     _requestsSha[clientId]![hashCode] = {};
     _requestsSha[clientId]![hashCode]!['requestNumber'] = _requestNumber;
     _requestsSha[clientId]![hashCode]!['startTime'] = DateTime.now();
